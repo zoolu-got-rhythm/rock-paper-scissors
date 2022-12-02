@@ -76,6 +76,8 @@ class Match{
             console.log("tie");
         }
 
+        
+
 
         if(this.score[this.playerA.id] === 3 || this.score[this.playerB.id] === 3){
             this.getWinnerOfGame();

@@ -3,8 +3,8 @@ import sleep from "./sleep";
 
 
 
-let playerA = new Player("chris", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
-let playerB = new Player("jose", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
+let playerA = new Player("robin", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
+let playerB = new Player("george", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
 let matchA = new Match(playerA, playerB, (player: Player) => {
     console.log(player.name + " wins!");

@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const _1 = require(".");
 const sleep_1 = __importDefault(require("./sleep"));
-let playerA = new _1.Player("chris", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
-let playerB = new _1.Player("jose", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
+let playerA = new _1.Player("robin", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
+let playerB = new _1.Player("george", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
 let matchA = new _1.Match(playerA, playerB, (player) => {
     console.log(player.name + " wins!");
 });
