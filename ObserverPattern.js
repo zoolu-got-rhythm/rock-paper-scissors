@@ -10,8 +10,12 @@ class SomeClass {
         this.observers = [];
     }
     attach(observer) {
+        this.observers.push(observer);
     }
     detach(observer) {
+        const indexOfObserver = this.observers.indexOf(observer);
+        if (indexOfObserver > -1)
+            this.observers.splice(indexOfObserver, 1);
     }
     notify(eventType) {
         this.observers.forEach(observer => {
@@ -19,3 +23,25 @@ class SomeClass {
         });
     }
 }
+class ChildClass extends SomeClass {
+    constructor() {
+        super();
+        this.data = 5;
+    }
+    doSomething() {
+        this.notify(SomeClassEvent.EVENT2);
+    }
+    getData() {
+        return this.data;
+    }
+}
+let childObject = new ChildClass();
+childObject.attach({
+    update: (obj, observerableEventEnum) => {
+        let ob = obj;
+        console.log("event triggered", observerableEventEnum);
+        console.log("getting data", ob.getData());
+    }
+});
+childObject.doSomething();
+childObject.doSomething();
