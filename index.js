@@ -2,6 +2,7 @@
 // rock paper scissors business logic/application state/model data
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hands = exports.Hand = exports.Match = exports.Player = void 0;
+const ObserverPattern_1 = require("./ObserverPattern");
 var Hand;
 (function (Hand) {
     Hand["ROCK"] = "ROCK";
@@ -22,9 +23,13 @@ class Player {
     }
 }
 exports.Player = Player;
+var MatchEvents;
+(function (MatchEvents) {
+})(MatchEvents || (MatchEvents = {}));
 // first to 3
-class Match {
+class Match extends ObserverPattern_1.Observable {
     constructor(playerA, playerB, onWinningPlayer) {
+        super();
         this.playerA = playerA;
         this.playerB = playerB;
         this.score = {

@@ -1,5 +1,8 @@
 // rock paper scissors business logic/application state/model data
 
+import { Observable } from "./observerPattern";
+
+
 
 enum Hand{
     ROCK = "ROCK",
@@ -31,14 +34,19 @@ interface MatchScore{
 
 type OnWinningPlayer = (player: Player) => void;
 
+enum MatchEvents{
+
+}
+
 // first to 3
-class Match{
+class Match extends Observable<Match, MatchEvents> {
     playerA: Player;
     playerB: Player;
     score: MatchScore;
     onWinningPlayer: OnWinningPlayer;
     gameIsFinished: boolean;
     constructor(playerA: Player, playerB: Player, onWinningPlayer: OnWinningPlayer){
+        super();
         this.playerA = playerA;
         this.playerB = playerB;
         this.score = {
