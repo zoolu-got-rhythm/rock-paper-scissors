@@ -14,11 +14,50 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const _1 = require(".");
 const sleep_1 = __importDefault(require("./sleep"));
+class RockPaperScissorsCLIObserver {
+    constructor() {
+        this.winnerAnnounced = false;
+    }
+    update(ObjectRef, observableEventEnum) {
+        switch (observableEventEnum) {
+            case _1.MatchEvents.PLAYER_A_WINS_ROUND:
+                this.playerAWinsRound(ObjectRef);
+                break;
+            case _1.MatchEvents.PLAYER_B_WINS_ROUND:
+                this.playerBWinsRound(ObjectRef);
+                break;
+            case _1.MatchEvents.TIE:
+                this.tie(ObjectRef);
+                break;
+            case _1.MatchEvents.MATCH_FINISHED:
+                this.matchFinished(ObjectRef);
+                break;
+        }
+    }
+    playerAWinsRound(ObjectRef) {
+        console.log(playerA.name + " wins round");
+    }
+    playerBWinsRound(ObjectRef) {
+        console.log(playerB.name + " wins round");
+    }
+    tie(ObjectRef) {
+        console.log("round tie");
+    }
+    matchFinished(ObjectRef) {
+        var _a;
+        if (!this.winnerAnnounced) {
+            console.log(((_a = ObjectRef.winningPlayer) === null || _a === void 0 ? void 0 : _a.name) + " wins the match!");
+            this.winnerAnnounced = true;
+        }
+        else {
+            console.log("match has ended: " + ObjectRef.getWinnerOfRound.name + " won");
+        }
+    }
+}
 let playerA = new _1.Player("robin", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
 let playerB = new _1.Player("george", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
-let matchA = new _1.Match(playerA, playerB, (player) => {
-    console.log(player.name + " wins!");
-});
+let matchA = new _1.Match(playerA, playerB);
+matchA.attach(new RockPaperScissorsCLIObserver());
 let round = (onRoundEnded) => {
     let count = 0;
     let tid = setInterval(() => {

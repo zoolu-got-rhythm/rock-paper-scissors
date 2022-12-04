@@ -4,9 +4,7 @@ const _1 = require(".");
 // game test 
 let playerA = new _1.Player("bob", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
 let playerB = new _1.Player("max", Math.random().toString(), _1.hands[Math.floor(Math.random() * _1.hands.length)]);
-let matchA = new _1.Match(playerA, playerB, (player) => {
-    console.log(player.name + " wins!");
-});
+let matchA = new _1.Match(playerA, playerB);
 console.log("playerA", playerA);
 console.log("playerB", playerB);
 // first to 3 round wins, maximum of 5 rounds can be played

@@ -1,12 +1,6 @@
 "use strict";
-// interface Observerable<ObservableType, ObserverableEventEnum>{
-//     observers: Observer<ObservableType, ObserverableEventEnum>[];
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Observable = void 0;
-// enum SomeClassEvent{
-//     EVENT1,
-//     EVENT2
-// }
 class Observable {
     constructor() {
         this.observers = [];

@@ -5,9 +5,7 @@ import { Player, Match, Hand, hands } from ".";
 let playerA = new Player("bob", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 let playerB = new Player("max", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
-let matchA = new Match(playerA, playerB, (player: Player) => {
-    console.log(player.name + " wins!");
-});
+let matchA = new Match(playerA, playerB);
 
 console.log("playerA", playerA);
 console.log("playerB", playerB);
