@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "typescript": "^4.9.3"
+  },
+
+  "scripts": {
+    "start-cmd-line-simulation": "tsc && node build/liveGameTest.js"
   }
 }

@@ -1,8 +1,9 @@
 # rock-paper-scissors
 
-![image](./screenshot1.png)
+<img src="./cmdLineSimulationScreenshot.png" alt="image" height="520"/>
 
 ## running: 
-- npm i
-- npx tsc 
-- node build/liveGameTest.js
+### install typescript
+``npm i``
+### run command line simulation
+``npm run start-cmd-line-simulation``
