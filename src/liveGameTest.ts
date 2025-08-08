@@ -1,19 +1,52 @@
-import { hands, Match, MatchEvents, Player } from ".";
+import { hands, Match, MatchEvents, Player, ResultWinCondition } from ".";
 import { Observer } from "./observerPattern";
 import sleep from "./sleep";
+import * as readline from "readline";
 
-let playerA = new Player(
+let playerA: Player = new Player(
   "robin",
   Math.random().toString(),
   hands[Math.floor(Math.random() * hands.length)]
 );
-let playerB = new Player(
-  "george",
+let playerB: Player = new Player(
+  "christo",
   Math.random().toString(),
   hands[Math.floor(Math.random() * hands.length)]
 );
 
-let matchA = new Match(playerA, playerB);
+function getPlayerNamesFromCmdLineInput() {
+  if (require.main === module) {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question("Enter Player A name: ", (playerAName) => {
+      rl.question("Enter Player B name: ", (playerBName) => {
+        // Example: create players with default hands
+        playerA = new Player(
+          playerAName,
+          Math.random().toString(),
+          hands[Math.floor(Math.random() * hands.length)]
+        );
+        playerB = new Player(
+          playerBName,
+          Math.random().toString(),
+          hands[Math.floor(Math.random() * hands.length)]
+        );
+
+        // You can now use playerA and playerB in your match logic
+        console.log(`Player A: ${playerA.name}, Player B: ${playerB.name}`);
+
+        rl.close();
+      });
+    });
+  }
+}
+
+// getPlayerNamesFromCmdLineInput();
+
+let matchA = new Match(playerA!, playerB!);
 
 class RockPaperScissorsCLIObserver implements Observer<Match, MatchEvents> {
   winnerAnnounced: boolean;
@@ -39,11 +72,42 @@ class RockPaperScissorsCLIObserver implements Observer<Match, MatchEvents> {
     }
   }
 
+  private howPlayerWonMessage(
+    resultWinCondition: ResultWinCondition | null,
+    winnerName: string,
+    loserName: string
+  ): string {
+    switch (resultWinCondition) {
+      case ResultWinCondition.ROCK_BEATS_SCISSORS:
+        return `${winnerName}'s rock blunts ${loserName}'s scissors`;
+      case ResultWinCondition.PAPER_BEATS_ROCK:
+        return `${winnerName}'s paper captures ${loserName}'s rock`;
+      case ResultWinCondition.SCISSORS_BEATS_PAPER:
+        return `${winnerName}'s scissors cut through ${loserName}'s paper`;
+      default:
+        return "stale mate";
+    }
+  }
+
   playerAWinsRound(ObjectRef: Match) {
+    console.log(
+      this.howPlayerWonMessage(
+        ObjectRef.howWasRoundWon,
+        playerA.name,
+        playerB.name
+      )
+    );
     console.log(playerA.name + " wins round \n");
   }
 
   playerBWinsRound(ObjectRef: Match) {
+    console.log(
+      this.howPlayerWonMessage(
+        ObjectRef.howWasRoundWon,
+        playerB.name,
+        playerA.name
+      )
+    );
     console.log(playerB.name + " wins round \n");
   }
 
@@ -77,7 +141,14 @@ let round = (onRoundEnded: () => void) => {
       console.log(`${playerB.name} reveals = ${playerB.currentHand}`);
       matchA.getWinnerOfRound();
       console.log(
-        matchA.score[playerA.id] + " - " + matchA.score[playerB.id] + "\n"
+        playerA.name +
+          " " +
+          matchA.score[playerA.id] +
+          " - " +
+          playerB.name +
+          " " +
+          matchA.score[playerB.id] +
+          "\n"
       );
       // count = 0;
       clearInterval(tid);
@@ -88,7 +159,7 @@ let round = (onRoundEnded: () => void) => {
   }, 1000); // 1000ms = 1s
 };
 
-const roundSpeedInMilliseconds = 1000;
+const roundSpeedInMilliseconds = 1500;
 let playRound = () => {
   round(async () => {
     await sleep(roundSpeedInMilliseconds);
