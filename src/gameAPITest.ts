@@ -1,7 +1,6 @@
 import { Player, Match, Hand, hands } from ".";
 
-
-// game test 
+// game api test 
 let playerA = new Player("bob", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 let playerB = new Player("max", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
