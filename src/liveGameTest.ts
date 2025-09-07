@@ -4,12 +4,12 @@ import sleep from "./sleep";
 import * as readline from "readline";
 
 let playerA: Player = new Player(
-  "robin",
+  "sam",
   Math.random().toString(),
   hands[Math.floor(Math.random() * hands.length)]
 );
 let playerB: Player = new Player(
-  "christo",
+  "maria",
   Math.random().toString(),
   hands[Math.floor(Math.random() * hands.length)]
 );
