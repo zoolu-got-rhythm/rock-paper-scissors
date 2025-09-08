@@ -1,65 +1,147 @@
 # rock-paper-scissors model (TypeScript)
 
 ## class diagram/design of object oriented model
-the idea is for the model/design to be fairly simple and not overly verbose, so you can easily test it and hook into its state using the observer pattern to write your own applications and view layers, e.g: web gui/CLI gui or a web socket application etc.
+
+the idea is for the design of the model/application logic to be fairly simple and not overly verbose, so you can easily test it and "hook" into its state using the observer pattern to write your own applications and view layers, e.g: web gui/CLI gui or a web socket application etc...
 
 ```mermaid
 classDiagram
-    class Player {
-        +String name
-        +String id
-        +Hand currentHand
-        +setCurrentHand(hand: Hand)
+    %% Observer/Observable pattern box
+    namespace ObserverPattern {
+
+        class Observer~ObservableClass,ObservableEventEnum~ {
+            <<interface>>
+            +update(ObjectRef: ObservableClass, observableEventEnum: ObservableEventEnum) void
+        }
+
+        class Observable~ObservableClass,ObservableEventEnum~ {
+            +Observer[] observers
+            +attach(observer: Observer)
+            +detach(observer: Observer)
+            +notify(eventType: ObservableEventEnum)
+        }
     }
 
-    class MatchScore {
-        &lt;&lt;interface&gt;&gt;
-        +[key: string]: number
-    }
+    %% Game Logic / Application State box
+    namespace ApplicationLogic {
+        class Player {
+            +String name
+            +String id
+            +Hand currentHand
+            +setCurrentHand(hand: Hand)
+        }
 
-    class Observable~T,E~ {
-        &lt;&lt;generic&gt;&gt;
-    }
+        class MatchScore {
+            <<interface>>
+            +[key: string]: number
+        }
 
-    class Match {
-        +Player playerA
-        +Player playerB
-        +MatchScore score
-        +Player winningPlayer
-        +boolean gameIsFinished
-        +ResultWinCondition howWasRoundWon
-        +getWinnerOfRound()
-        -getWinnerOfGame()
-    }
+        class Match {
+            +Player playerA
+            +Player playerB
+            +MatchScore score
+            +Player winningPlayer
+            +boolean gameIsFinished
+            +ResultWinCondition howWasRoundWon
+            +getWinnerOfRound()
+            -getWinnerOfGame()
+        }
 
-    class Hand {
-        &lt;&lt;enumeration&gt;&gt;
-        ROCK
-        PAPER
-        SCISSORS
-    }
+        class Hand {
+            <<enumeration>>
+            ROCK
+            PAPER
+            SCISSORS
+        }
 
-    class MatchEvents {
-        &lt;&lt;enumeration&gt;&gt;
-        PLAYER_A_WINS_ROUND
-        PLAYER_B_WINS_ROUND
-        TIE
-        MATCH_FINISHED
-    }
+        class MatchEvents {
+            <<enumeration>>
+            PLAYER_A_WINS_ROUND
+            PLAYER_B_WINS_ROUND
+            TIE
+            MATCH_FINISHED
+        }
 
-    class ResultWinCondition {
-        &lt;&lt;enumeration&gt;&gt;
-        ROCK_BEATS_SCISSORS
-        PAPER_BEATS_ROCK
-        SCISSORS_BEATS_PAPER
+        class ResultWinCondition {
+            <<enumeration>>
+            ROCK_BEATS_SCISSORS
+            PAPER_BEATS_ROCK
+            SCISSORS_BEATS_PAPER
+        }
     }
 
     Observable <|-- Match
+    Observable "1" o-- "0..*" Observer : observers
     Player "1" --> "1" Match : playerA
     Player "1" --> "1" Match : playerB
     Match --> MatchScore
     Match --> ResultWinCondition
     Player --> Hand
+```
+
+## game api
+
+```typescript
+// game api test
+let playerA = new Player(
+  "bob", // player name
+  Math.random().toString(), // unique player id
+  hands[Math.floor(Math.random() * hands.length)] // initial rock, paper, scissors hand
+);
+let playerB = new Player(
+  "max", // player name
+  Math.random().toString(), // unique player id
+  hands[Math.floor(Math.random() * hands.length)] // initial rock, paper, scissors hand
+);
+
+let matchA = new Match(playerA, playerB);
+
+class YourUI implements Observer<Match, MatchEvents> {
+  constructor() {}
+  update(ObjectRef: Match, observableEventEnum: MatchEvents) {
+    // get notified of changes to match state and event types here,
+    // and update the UI accordingly
+    switch (observableEventEnum) {
+      case MatchEvents.PLAYER_A_WINS_ROUND:
+        // player A won the round, update the UI accordingly
+        console.log(`player A: ${ObjectRef.getWinnerOfRound()} wins the round`);
+        break;
+      case MatchEvents.PLAYER_B_WINS_ROUND:
+        // player B won the round, update the UI accordingly
+        console.log(`player B: ${ObjectRef.getWinnerOfRound()} wins the round`);
+        break;
+      case MatchEvents.TIE:
+        // round was a tie, update the UI accordingly
+        console.log(`round was a tie`);
+        break;
+      case MatchEvents.MATCH_FINISHED:
+        // match is finished, update the UI accordingly
+        console.log(`match is finished, winner is ${ObjectRef.winningPlayer?.name}`);
+        break;
+    }
+  }
+}
+
+matchA.attach(new YourUI());
+
+// start playing a match
+
+// first to 3 round wins
+playerA.setCurrentHand(Hand.ROCK);
+playerB.setCurrentHand(Hand.SCISSORS);
+matchA.getWinnerOfRound();
+matchA.getWinnerOfRound();
+playerB.setCurrentHand(Hand.PAPER);
+matchA.getWinnerOfRound();
+matchA.getWinnerOfRound();
+// will be tied at 2-2 each here
+
+playerA.setCurrentHand(Hand.SCISSORS);
+matchA.getWinnerOfRound(); // winner announced here
+matchA.getWinnerOfRound(); // void round
+matchA.getWinnerOfRound(); // void round
+
+// to start a new match, instantiate a new match object and pass in player objects again, repeat the process
 ```
 
 ## running:
