@@ -1,13 +1,54 @@
 {
-  "scripts": {
-    "test": "jest",
-    "start-cmd-line-simulation": "tsc && node build/liveGameTest.js"
-  },
-  "devDependencies": {
-    "typescript": "^4.9.3",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^24.2.0",
-    "jest": "^30.1.3",
-    "ts-jest": "^29.4.1"
-  }
+    "name": "rock-paper-scissors",
+    "version": "1",
+    "description": "a simple to use rock paper scissors application model, written in typescript",
+    "main": "build/index.js",
+    "types": "build/index.d.ts",
+    "author": "christopher.pkm@gmail.com",
+    "license": "MIT",
+    "keywords": [
+        "rock",
+        "paper",
+        "scissors",
+        "javascript",
+        "typescript",
+        "model",
+        "game",
+        "application"
+    ],
+    "scripts": {
+        "test": "jest",
+        "build": "tsc",
+        "start": "tsc && node build/liveGameTest.js",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "lint": "eslint",
+        "prepare": "npm run format && npm run build",
+        "postversion": "git push && git push --tags"
+    },
+    "devDependencies": {
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24.2.0",
+        "eslint": "^9.35.0",
+        "globals": "^16.4.0",
+        "jest": "^30.1.3",
+        "jiti": "^2.5.1",
+        "prettier": "^3.6.2",
+        "ts-jest": "^29.4.1",
+        "typescript": "^4.9.3",
+        "typescript-eslint": "^8.43.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zoolu-got-rhythm/rock-paper-scissors"
+    },
+    "bugs": {
+        "url": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/issues"
+    },
+    "homepage": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/blob/main/README.md",
+    "files": [
+        "build/index.js",
+        "build/index.js.map",
+        "build/observerPattern.js",
+        "build/observerPattern.js.map"
+    ]
 }
