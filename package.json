@@ -3,9 +3,13 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
+    "test": "jest",
     "start-cmd-line-simulation": "tsc && node build/liveGameTest.js"
   },
   "devDependencies": {
-    "@types/node": "^24.2.0"
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.2.0",
+    "jest": "^30.1.3",
+    "ts-jest": "^29.4.1"
   }
 }
