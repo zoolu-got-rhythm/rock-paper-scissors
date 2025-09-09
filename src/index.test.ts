@@ -88,4 +88,12 @@ describe("Rock Paper Scissors Model", () => {
 
     expect(match.winningPlayer).toBe(playerA);
   });
+
+  test("throws error if players have the same ID", () => {
+    const playerA = new Player("A", "1", Hand.ROCK);
+    const playerB = new Player("B", "1", Hand.SCISSORS);
+    expect(() => new Match(playerA, playerB)).toThrow("Players must have different IDs");
+  });
 });
+
+

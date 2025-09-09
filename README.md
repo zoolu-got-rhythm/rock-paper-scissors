@@ -116,7 +116,9 @@ class YourUI implements Observer<Match, MatchEvents> {
         break;
       case MatchEvents.MATCH_FINISHED:
         // match is finished, update the UI accordingly
-        console.log(`match is finished, winner is ${ObjectRef.winningPlayer?.name}`);
+        console.log(
+          `match is finished, winner is ${ObjectRef.winningPlayer?.name}`
+        );
         break;
     }
   }
@@ -155,3 +157,7 @@ matchA.getWinnerOfRound(); // void round
 `npm run start-cmd-line-simulation`
 
 <img src="./cmd-line-simulation.gif">
+
+### run unit tests
+
+`npm run test`

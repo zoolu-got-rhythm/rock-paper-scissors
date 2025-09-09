@@ -53,6 +53,11 @@ class Match extends Observable<Match, MatchEvents> {
   howWasRoundWon: ResultWinCondition | null = null;
 
   constructor(playerA: Player, playerB: Player) {
+
+    if(playerA.id === playerB.id) {
+      throw new Error("Players must have different IDs");
+    }
+
     super();
     this.playerA = playerA;
     this.playerB = playerB;
