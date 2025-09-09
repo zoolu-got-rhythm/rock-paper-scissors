@@ -1,4 +1,4 @@
-# rock-paper-scissors application model (TypeScript)
+# rock-paper-scissors application model
 
 ## class diagram/design of object oriented model
 
