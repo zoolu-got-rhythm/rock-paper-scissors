@@ -9,5 +9,5 @@ export default defineConfig([
     },
     tseslint.configs.recommended,
 ], {
-    ignores: ["**/*.js"],
+    ignores: ["**/*.js", "**/*.mjs"],
 });

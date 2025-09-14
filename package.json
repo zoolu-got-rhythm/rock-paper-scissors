@@ -2,8 +2,8 @@
     "name": "rock-paper-scissors-model",
     "version": "1.0.3",
     "description": "a simple to use rock paper scissors application model, written in typescript",
-    "main": "build/index.js",
-    "types": "build/index.d.ts",
+    "main": "build/src/index.js",
+    "types": "build/src/index.d.ts",
     "author": "christopher.pkm@gmail.com",
     "license": "MIT",
     "keywords": [
@@ -19,7 +19,7 @@
     "scripts": {
         "test": "jest",
         "build": "tsc",
-        "start": "tsc && node build/liveGameTest.js",
+        "start": "tsc && node build/src/liveGameTest.js",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint",
         "prepare": "npm run format && npm run build",
@@ -46,11 +46,11 @@
     },
     "homepage": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/blob/main/README.md",
     "files": [
-        "build/index.js",
-        "build/index.js.map",
-        "build/index.d.ts",
-        "build/observerPattern.js",
-        "build/observerPattern.js.map",
-        "build/observerPattern.d.ts"
+        "build/src/index.js",
+        "build/src/index.js.map",
+        "build/src/index.d.ts",
+        "build/src/observerPattern.js",
+        "build/src/observerPattern.js.map",
+        "build/src/observerPattern.d.ts"
     ]
 }
