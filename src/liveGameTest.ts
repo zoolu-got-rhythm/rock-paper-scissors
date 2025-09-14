@@ -6,31 +6,31 @@ import * as readline from "readline";
 let playerA: Player = new Player("sam", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 let playerB: Player = new Player("maria", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
-function getPlayerNamesFromCmdLineInput() {
-    if (require.main === module) {
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-        });
+// function getPlayerNamesFromCmdLineInput() {
+//     if (require.main === module) {
+//         const rl = readline.createInterface({
+//             input: process.stdin,
+//             output: process.stdout,
+//         });
 
-        rl.question("Enter Player A name: ", (playerAName) => {
-            rl.question("Enter Player B name: ", (playerBName) => {
-                // Example: create players with default hands
-                playerA = new Player(playerAName, Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
-                playerB = new Player(playerBName, Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
+//         rl.question("Enter Player A name: ", (playerAName) => {
+//             rl.question("Enter Player B name: ", (playerBName) => {
+//                 // Example: create players with default hands
+//                 playerA = new Player(playerAName, Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
+//                 playerB = new Player(playerBName, Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
-                // You can now use playerA and playerB in your match logic
-                console.log(`Player A: ${playerA.name}, Player B: ${playerB.name}`);
+//                 // You can now use playerA and playerB in your match logic
+//                 console.log(`Player A: ${playerA.name}, Player B: ${playerB.name}`);
 
-                rl.close();
-            });
-        });
-    }
-}
+//                 rl.close();
+//             });
+//         });
+//     }
+// }
 
 // getPlayerNamesFromCmdLineInput();
 
-let matchA = new Match(playerA!, playerB!);
+const matchA = new Match(playerA!, playerB!);
 
 class RockPaperScissorsCLIObserver implements Observer<Match, MatchEvents> {
     winnerAnnounced: boolean;
@@ -95,9 +95,9 @@ class RockPaperScissorsCLIObserver implements Observer<Match, MatchEvents> {
 
 matchA.attach(new RockPaperScissorsCLIObserver());
 
-let round = (onRoundEnded: () => void) => {
+const round = (onRoundEnded: () => void) => {
     let count = 0;
-    let tid = setInterval(() => {
+    const tid = setInterval(() => {
         count++;
         if (count == 3) {
             console.log("scissors! \n");
@@ -117,7 +117,7 @@ let round = (onRoundEnded: () => void) => {
 };
 
 const roundSpeedInMilliseconds = 1500;
-let playRound = () => {
+const playRound = () => {
     round(async () => {
         await sleep(roundSpeedInMilliseconds);
         playRound(); // call self (recursively)

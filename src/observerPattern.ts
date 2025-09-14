@@ -19,7 +19,7 @@ class Observable<ObservableClass, ObservableEventEnum> {
     }
 
     notify(eventType: ObservableEventEnum) {
-        let objRef = this as unknown as ObservableClass;
+        const objRef = this as unknown as ObservableClass;
         this.observers.forEach((observer) => {
             observer.update(objRef, eventType);
         });
