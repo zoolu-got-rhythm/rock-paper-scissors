@@ -1,5 +1,6 @@
-import { Player, Match, Hand, hands, MatchEvents } from ".";
-import { Observer } from "./observerPattern";
+import { Hand, hands, Match, MatchEvents, Player } from "./index.js";
+import { Observer } from "./observerPattern.js";
+
 
 // game api test
 const playerA = new Player(

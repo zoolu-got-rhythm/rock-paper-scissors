@@ -1,7 +1,7 @@
-import { hands, Match, MatchEvents, Player, ResultWinCondition } from ".";
-import { Observer } from "./observerPattern";
-import sleep from "./sleep";
-import * as readline from "readline";
+
+import { Player, hands, Match, MatchEvents, ResultWinCondition } from "./index.js";
+import { Observer } from "./observerPattern.js";
+import sleep from "./sleep.js";
 
 const playerA: Player = new Player("sam", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 const playerB: Player = new Player("maria", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
