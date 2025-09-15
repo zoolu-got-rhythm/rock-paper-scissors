@@ -3,8 +3,8 @@ import { Observer } from "./observerPattern";
 import sleep from "./sleep";
 import * as readline from "readline";
 
-let playerA: Player = new Player("sam", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
-let playerB: Player = new Player("maria", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
+const playerA: Player = new Player("sam", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
+const playerB: Player = new Player("maria", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
 // function getPlayerNamesFromCmdLineInput() {
 //     if (require.main === module) {
