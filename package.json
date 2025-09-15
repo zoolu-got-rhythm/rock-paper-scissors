@@ -1,6 +1,6 @@
 {
     "name": "rock-paper-scissors-model",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "a simple to use rock paper scissors application model, written in typescript",
     "main": "build/src/index.js",
     "types": "build/src/index.d.ts",
