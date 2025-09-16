@@ -2,3 +2,4 @@ node_modules
 .vscode
 build
 *.tgz
+.DS_store
