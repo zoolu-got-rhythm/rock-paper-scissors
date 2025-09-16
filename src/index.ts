@@ -1,6 +1,6 @@
 // rock paper scissors business logic/application state/model data
 
-import { Observable } from "./observerPattern.js";
+import { Observable } from "./observerPattern";
 
 
 enum Hand {

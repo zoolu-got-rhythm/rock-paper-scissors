@@ -52,6 +52,5 @@
         "build/src/observerPattern.js",
         "build/src/observerPattern.js.map",
         "build/src/observerPattern.d.ts"
-    ],
-    "type": "module"
+    ]
 }

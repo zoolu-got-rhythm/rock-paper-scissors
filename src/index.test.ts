@@ -1,4 +1,4 @@
-import { Player, Hand, Match, MatchEvents } from "./index.js";
+import { Player, Hand, Match, MatchEvents } from ".";
 
 describe("Rock Paper Scissors Model", () => {
     test("Player can set hand", () => {

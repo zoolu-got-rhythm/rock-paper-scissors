@@ -1,34 +1,10 @@
+import { Player, hands, Match, MatchEvents, ResultWinCondition } from ".";
+import { Observer } from "./observerPattern";
+import sleep from "./sleep";
 
-import { Player, hands, Match, MatchEvents, ResultWinCondition } from "./index.js";
-import { Observer } from "./observerPattern.js";
-import sleep from "./sleep.js";
 
 const playerA: Player = new Player("sam", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 const playerB: Player = new Player("maria", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
-
-// function getPlayerNamesFromCmdLineInput() {
-//     if (require.main === module) {
-//         const rl = readline.createInterface({
-//             input: process.stdin,
-//             output: process.stdout,
-//         });
-
-//         rl.question("Enter Player A name: ", (playerAName) => {
-//             rl.question("Enter Player B name: ", (playerBName) => {
-//                 // Example: create players with default hands
-//                 playerA = new Player(playerAName, Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
-//                 playerB = new Player(playerBName, Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
-
-//                 // You can now use playerA and playerB in your match logic
-//                 console.log(`Player A: ${playerA.name}, Player B: ${playerB.name}`);
-
-//                 rl.close();
-//             });
-//         });
-//     }
-// }
-
-// getPlayerNamesFromCmdLineInput();
 
 const matchA = new Match(playerA!, playerB!);
 
