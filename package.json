@@ -1,7 +1,7 @@
 {
     "name": "rock-paper-scissors-model",
     "version": "1.0.6",
-    "description": "a simple to use rock paper scissors application model, written in typescript",
+    "description": "basic rock, paper, scissors API you can use to write your own RPS apps with!",
     "main": "build/src/index.js",
     "types": "build/src/index.d.ts",
     "author": "christopher.pkm@gmail.com",
@@ -44,7 +44,7 @@
     "bugs": {
         "url": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/issues"
     },
-    "homepage": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/blob/main/README.md",
+    "homepage": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/blob/main/NPM_README.md",
     "files": [
         "build/src/index.js",
         "build/src/index.js.map",
