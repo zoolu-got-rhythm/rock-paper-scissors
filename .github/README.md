@@ -1,5 +1,7 @@
 # rock-paper-scissors application model
 
+basic rock, paper, scissors API you can use to write your own RPS apps with!
+
 ## class diagram/design of object oriented model
 
 the idea is for the design of the model/application logic to be fairly simple and not overly verbose, so you can easily test it and "hook" into its state using the observer pattern to write your own applications and view layers, e.g: web gui/CLI gui or a web socket application etc...
@@ -150,15 +152,12 @@ matchA.getWinnerOfRound(); // void round
 ## running:
 
 ### install typescript
-
 `npm i`
 
 ### run command line simulation
-
 `npm run start`
 
-<img src="./cmd-line-simulation.gif">
+<img src="../cmd-line-simulation.gif">
 
 ### run unit tests
-
 `npm run test`

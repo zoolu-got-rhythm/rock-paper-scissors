@@ -44,7 +44,7 @@
     "bugs": {
         "url": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/issues"
     },
-    "homepage": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/blob/main/README.md",
+    "homepage": "https://github.com/zoolu-got-rhythm/rock-paper-scissors/tree/main",
     "files": [
         "build/src/index.js",
         "build/src/index.js.map",
