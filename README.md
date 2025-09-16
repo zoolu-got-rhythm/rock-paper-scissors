@@ -152,7 +152,7 @@ matchA.getWinnerOfRound(); // void round
 
 ### run command line simulation
 
-`npm run start-cmd-line-simulation`
+`npm run start`
 
 <img src="./cmd-line-simulation.gif">
 
