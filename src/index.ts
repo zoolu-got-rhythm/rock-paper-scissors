@@ -2,7 +2,6 @@
 
 import { Observable } from "./observerPattern";
 
-
 enum Hand {
     ROCK = "ROCK",
     PAPER = "PAPER",

@@ -2,7 +2,6 @@ import { Player, hands, Match, MatchEvents, ResultWinCondition } from ".";
 import { Observer } from "./observerPattern";
 import sleep from "./sleep";
 
-
 const playerA: Player = new Player("sam", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 const playerB: Player = new Player("maria", Math.random().toString(), hands[Math.floor(Math.random() * hands.length)]);
 
