@@ -82,33 +82,36 @@ classDiagram
 ## game api
 
 ```typescript
+import { Player, hands, Match, MatchEvents, Hand } from ".";
+import { Observer } from "./observerPattern";
+
 // game api test
-let playerA = new Player(
+const playerA = new Player(
     "bob", // player name
     Math.random().toString(), // unique player id
     hands[Math.floor(Math.random() * hands.length)], // initial rock, paper, scissors hand
 );
-let playerB = new Player(
+const playerB = new Player(
     "max", // player name
     Math.random().toString(), // unique player id
     hands[Math.floor(Math.random() * hands.length)], // initial rock, paper, scissors hand
 );
 
-let matchA = new Match(playerA, playerB);
+const matchA = new Match(playerA, playerB);
 
 class YourUI implements Observer<Match, MatchEvents> {
     constructor() {}
-    update(ObjectRef: Match, observableEventEnum: MatchEvents) {
+    update(currentGameStateObjectRef: Match, observableEventEnum: MatchEvents) {
         // get notified of changes to match state and event types here,
         // and update the UI accordingly
         switch (observableEventEnum) {
             case MatchEvents.PLAYER_A_WINS_ROUND:
                 // player A won the round, update the UI accordingly
-                console.log(`player A: ${ObjectRef.getWinnerOfRound()} wins the round`);
+                console.log(`player A: ${currentGameStateObjectRef.getWinnerOfRound()} wins the round`);
                 break;
             case MatchEvents.PLAYER_B_WINS_ROUND:
                 // player B won the round, update the UI accordingly
-                console.log(`player B: ${ObjectRef.getWinnerOfRound()} wins the round`);
+                console.log(`player B: ${currentGameStateObjectRef.getWinnerOfRound()} wins the round`);
                 break;
             case MatchEvents.TIE:
                 // round was a tie, update the UI accordingly
@@ -116,7 +119,7 @@ class YourUI implements Observer<Match, MatchEvents> {
                 break;
             case MatchEvents.MATCH_FINISHED:
                 // match is finished, update the UI accordingly
-                console.log(`match is finished, winner is ${ObjectRef.winningPlayer?.name}`);
+                console.log(`match is finished, winner is ${currentGameStateObjectRef.winningPlayer?.name}`);
                 break;
         }
     }
