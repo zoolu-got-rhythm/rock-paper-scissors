@@ -1,5 +1,7 @@
 # rock-paper-scissors application model
 
+basic rock, paper, scissors API you can use to write your own RPS apps with!
+
 ## design of object oriented model
 
 the idea is for the design of the model/application logic to be fairly simple and not overly verbose, so you can easily test it and "hook" into its state using the observer pattern to write your own applications and view layers, e.g: web gui/CLI gui or a web socket application etc...
@@ -14,12 +16,12 @@ import { Observer } from "./observerPattern";
 const playerA = new Player(
     "bob", // player name
     Math.random().toString(), // unique player id
-    hands[Math.floor(Math.random() * hands.length)], // initial rock, paper, scissors hand
+    hands[Math.floor(Math.random() * hands.length)], // initial rock, paper, scissors hand, here i've made it random
 );
 const playerB = new Player(
     "max", // player name
     Math.random().toString(), // unique player id
-    hands[Math.floor(Math.random() * hands.length)], // initial rock, paper, scissors hand
+    hands[Math.floor(Math.random() * hands.length)], // initial rock, paper, scissors hand, here i've made it random
 );
 
 const matchA = new Match(playerA, playerB);
@@ -73,6 +75,5 @@ matchA.getWinnerOfRound(); // void round
 ```
 
 ## example CMD line app written using this package
+
 <img src="./cmd-line-simulation.gif">
-
-
