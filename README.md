@@ -1,4 +1,4 @@
-# rock-paper-scissors-api
+# rock-paper-scissors-app
 
 basic rock, paper, scissors API you can use to write your own RPS apps with!
 
