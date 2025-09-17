@@ -1,23 +1,19 @@
 {
     "name": "rock-paper-scissors-app",
-    "version": "1.0.15",
+    "version": "1.0.14",
     "description": "basic rock, paper, scissors API you can use to write your own RPS apps with!",
     "main": "build/src/index.js",
     "types": "build/src/index.d.ts",
     "exports": {
         ".": {
-            "require": [
-                "./build/src/index.js",
-                "./build/src/observerPattern.js"
-            ],
-            "import": [
-                "./build/src/index.js",
-                "./build/src/observerPattern.js"
-            ],
-            "types": [
-                "./build/src/index.d.ts",
-                "./build/src/observerPattern.d.ts"
-            ]
+            "require": "./build/src/index.js",
+            "import": "./build/src/index.js",
+            "types": "./build/src/index.d.ts"
+        },
+        "./observerPattern": {
+            "require": "./build/src/observerPattern.js",
+            "import": "./build/src/observerPattern.js",
+            "types": "./build/src/observerPattern.d.ts"
         }
     },
     "author": "christopher.pkm@gmail.com",
