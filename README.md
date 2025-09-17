@@ -9,7 +9,7 @@ the idea is for the design of the model/application logic to be fairly simple an
 ## game api
 
 ```typescript
-import { Player, hands, Match, MatchEvents, Hand } from ".";
+import { Player, hands, Match, MatchEvents, Hand } from "rock";
 import { Observer } from "./observerPattern";
 
 // game api test
