@@ -1,6 +1,6 @@
 {
     "name": "rock-paper-scissors-app",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "basic rock, paper, scissors API you can use to write your own RPS apps with!",
     "main": "build/src/index.js",
     "types": "build/src/index.d.ts",
