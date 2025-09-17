@@ -4,7 +4,7 @@ basic rock, paper, scissors API you can use to write your own RPS apps with!
 
 ## design of object oriented model
 
-the idea is for the design of the model/application logic to be fairly simple and not overly verbose, so you can easily test it and "hook" into its state using the observer pattern to write your own applications and view layers, e.g: web gui/CLI gui or a web socket application etc...
+the idea is for the design of the model/application logic to be fairly simple and not overly verbose, so you can easily test it and "hook" into its state using the observer pattern to write your own applications and view layers, e.g: web GUI, a CLI or a web socket application etc... whatever you can imagine. see [github readme](https://github.com/zoolu-got-rhythm/rock-paper-scissors) for UML class diagram of object oriented design.
 
 ## game api
 
