@@ -6,14 +6,18 @@
     "types": "build/src/index.d.ts",
     "exports": {
         ".": {
-            "require": "./build/src/index.js",
-            "import": "./build/src/index.js",
-            "types": "./build/src/index.d.ts"
-        },
-        "./observerPattern": {
-            "require": "./build/src/observerPattern.js",
-            "import": "./build/src/observerPattern.js",
-            "types": "./build/src/observerPattern.d.ts"
+            "require": [
+                "./build/src/index.js",
+                "./build/src/observerPattern.js"
+            ],
+            "import": [
+                "./build/src/index.js",
+                "./build/src/observerPattern.js"
+            ],
+            "types": [
+                "./build/src/index.d.ts",
+                "./build/src/observerPattern.d.ts"
+            ]
         }
     },
     "author": "christopher.pkm@gmail.com",
