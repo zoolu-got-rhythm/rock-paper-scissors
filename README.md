@@ -9,8 +9,8 @@ the idea is for the design of the model/application logic to be fairly simple an
 ## game api
 
 ```typescript
-import { Player, hands, Match, MatchEvents, Hand } from "rock";
-import { Observer } from "./observerPattern";
+import { Player, hands, Match, MatchEvents, Hand } from "rock-paper-scissors-app";
+import { Observer } from "rock-paper-scissors-app/observerPattern";
 
 // game api test
 const playerA = new Player(
